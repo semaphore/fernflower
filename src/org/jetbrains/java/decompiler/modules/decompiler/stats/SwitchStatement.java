@@ -1,4 +1,4 @@
-// Copyright 2000-2018 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package org.jetbrains.java.decompiler.modules.decompiler.stats;
 
 import org.jetbrains.java.decompiler.code.SwitchInstruction;
@@ -19,7 +19,7 @@ import org.jetbrains.java.decompiler.util.TextBuffer;
 
 import java.util.*;
 
-public class SwitchStatement extends Statement {
+public final class SwitchStatement extends Statement {
 
   // *****************************************************************************
   // private fields
@@ -122,7 +122,6 @@ public class SwitchStatement extends Statement {
       for (int j = 0; j < edges.size(); j++) {
         if (edges.get(j) == default_edge) {
           buf.appendIndent(indent).append("default:").appendLineSeparator();
-          tracer.incrementCurrentSourceLine();
         }
         else {
           buf.appendIndent(indent).append("case ");
@@ -139,8 +138,8 @@ public class SwitchStatement extends Statement {
           }
 
           buf.append(":").appendLineSeparator();
-          tracer.incrementCurrentSourceLine();
         }
+        tracer.incrementCurrentSourceLine();
       }
 
       buf.append(ExprProcessor.jmpWrapper(stat, indent + 1, false, tracer));

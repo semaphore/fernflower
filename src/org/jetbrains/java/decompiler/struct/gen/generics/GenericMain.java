@@ -1,4 +1,4 @@
-// Copyright 2000-2017 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package org.jetbrains.java.decompiler.struct.gen.generics;
 
 import org.jetbrains.java.decompiler.code.CodeConstants;
@@ -9,7 +9,7 @@ import org.jetbrains.java.decompiler.util.TextUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericMain {
+public final class GenericMain {
 
   private static final String[] typeNames = {
     "byte",
@@ -95,7 +95,7 @@ public class GenericMain {
     }
   }
 
-  private static String parseFormalParameters(String signature, List<String> parameters, List<List<GenericType>> bounds) {
+  private static String parseFormalParameters(String signature, List<? super String> parameters, List<? super List<GenericType>> bounds) {
     if (signature.charAt(0) != '<') {
       return signature;
     }
